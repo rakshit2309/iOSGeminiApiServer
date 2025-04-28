@@ -75,3 +75,5 @@ tzdata==2023.3
 urllib3==2.2.3
 gunicorn
 Flask
+google-generativeai
+
