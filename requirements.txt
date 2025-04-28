@@ -76,4 +76,5 @@ urllib3==2.2.3
 gunicorn
 Flask
 google-generativeai
+python-dotenv
 
