@@ -40,6 +40,27 @@ def analyze_audio():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+
+@app.route('/check_sentence', methods=['POST'])
+def analyze_text():
+    try:
+        data = request.get_json()
+        transcribed_text = data['transcribed_text']
+        text_prompt = data['text_prompt']
+
+        # Assuming `model.generate_content` can handle text input
+        contents = {
+            "parts": [
+                {"text": transcribed_text},
+                {"text": text_prompt}
+            ],
+        }
+
+        response = model.generate_content(contents)
+        return jsonify({'result': response.text})
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 # if __name__ == '__main__':
 #    app.run(host='0.0.0.0', port=5000, debug=True)
 
